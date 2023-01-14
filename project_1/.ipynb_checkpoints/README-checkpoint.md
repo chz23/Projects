@@ -1,199 +1,108 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 1: Exploring climate data of Singapore
 
-### Overview
+## Problem Statement
 
-Our first module in DSI covers:
-- Basic statistics and probability
-- Many Python programming concepts
-- Programmatically interacting with files and directories
-- Visualizations
-- EDA
-- Working with Jupyter notebooks for development and reporting
+Event cancellations in Singapore often occur as a result of adverse weather, more specifically, rain. This poses an issue to People's Association, which plans numerous events to engage Singaporeans from all walks of life. This project aims to analyse and identify monthly weather patterns so that People's Association staff will be able to plan events around the local weather more effectively, thus resulting in fewer event cancellations.
 
-You might wonder if you're ready to start doing data science. While you still have **tons** to learn, there are many aspects of the data science process that you're ready to tackle. Project 1 aims to allow you to practice and demonstrate these skills.
+## Data Dictionary
 
-For our first project, we're going to analyze climate trends in Singapore. Climate refers to the general weather conditions prevailing over an area for a long period. There are several aspect to studying climate that includes rainfall, temperature, relative humidity, wet build temperature, sun shine duration etc.
+|Feature|Type|Dataset|Description|
+|---|---|---|---|
+|month|_object (str)_|N.A.|Month as 2-digit numbers|
+|maximum_rainfall_in_a_day|_float_|rain_max_in_day_monthly|Total rainfall in the wettest day of the month (unit: mm)|
+|no_of_rainy_days|_int_|rain_days_monthly|Number of rainy days|
+|total_rainfall|_float_|rain_total_monthly|Total rainfall (unit: mm)|
+|mean_humidity|_float_|humidity_mean_monthly|Mean relative humidity (unit: %)|
+|mean_sunshine_hrs|_float_|sunshine_daily_mean_monthly|Mean number of hours of sunshine|
+|mean_temp|_float_|temp_mean_monthly|Mean temperature (unit: °C)|
+|total_days|_int_|N.A.|Number of days in the specified month|
+
+## Summary of Analysis
+
+### Correlation between rainfall and other weather variables
+
+Rainfall is fairly positively correlated with humidity. The higher the humidity, the higher the rainfall rate.
+
+Rainfall is somewhat inversely correlated with temperature. The higher the temperature, the lower the rainfall rate. However, this is not seen across all months.
+
+Rainfall is strongly inversely correlated with hours of sunshine. The higher the number of hours of sunshine, the lower the rainfall rate.
+
+### Overview of months
+
+The rainy season takes place from Oct to Dec. These months feature the highest rainfall rates (number of rainy days divided by total number of days) as well as total rainfall. It rains often and heavily, with consecutive periods of rain being rather common. Weather is stable and predictable, and the abovementioned correlations tend to be true of this period, ie. these months are usually wet, humid, cooling and cloudy.
+
+Apr to Sep are the 'in-between' period in terms of rainfall, with a few patterns being noticeable within this period itself. For example, from Apr to May, Sumatra Squalls account for quite a number of rainy periods, and these showers tend to take place in predawn or morning. This period also includes the hottest stretch of the year from Apr to May.
+
+Jan to Mar are the driest as well as most unpredictable months of the year. Rainfall can vary a lot from year to year, and humidity and temperature can also defy expectations at times. This is due to an additional factor being crucial in determining weather for these months: the Northeast Monsoon.
+
+### Northeast Monsoon
+
+This period (Dec - early Mar) can be split into 2 parts, with the first half of the season being wet and the second half being dry. The monsoon phenomenon is essentially a rain-belt that shifts across Asia. Thus, it doesn't 'strike' a country on a specific day. Instead, it comes gradually and not always consistently. By Jan, the rain-belt should have moved on, leaving behind strong winds and a dry period. This explains why Jan - Mar can experience a lot of volatility - for example, in a year when the monsoon is 'delayed', these months will most likely be significantly wetter than usual.
+
+On the other hand, Dec is always stable because while the monsoon is considered to 'commence' in Dec, in reality, the rainy season starts in Oct. By the time Nov and Dec come round, the rainy season is at its peak, ie. they are almost never affected by delays in monsoon periods or otherwise.
+
+## Conclusions & Recommendations
+
+### Outdoor activities
+
+#### Oct: start of the rainy season
+
+Cool, wet conditions are typically expected as the year nears the later months; Oct typically marks the start of the rainy season. It has a much lower rainfall rate compared to Nov and Dec, but it's still above the average rainfall rate. Continuing on from Sep, rainfall becomes heavier once October hits, and storms typically strike during afternoons and early evenings. In addition, some volatility is expected since there is no 'official' or exact start to the monsoon period.
+
+#### Avoid the rainiest months - Nov & Dec
+
+Both months have _consistently_ proven to be the wettest of all months. In addition, both months tend to experience moderate to heavy rainfall that goes on continuously over consecutive days, sometimes lasting up to a week! If complete avoidance is not possible, especially since it's for an entire 2-month stretch, consider the following:
+- Create ample wet weather plans while keeping in mind that they are, more likely than not, going to be used.
+- Create flexible schedules that involve both indoor and outdoor activities, preferably in an interchangeable manner.
+- Simplify schedules & avoid being over-ambitious - Dec is a popular month for travelling anyway.
+    
+#### Jan is a fairly unpredictable month - tread with caution
+
+As the tail-end of the wet season, Jan's lack of predictability is unsurprising, since the exact start & end of monsoon seasons are not set in stone. Consider the following mitigating measures:
+- Keep the schedule for Jan largely interchangeable; weather patterns, while not obvious way ahead of time, may potentially be more predictable when it's closer to the actual month. Having a good mix of outdoors and indoors activities for the month makes it easier to swap them out for one another.
+- Schedule outdoor activities towards the tail-end of the month when the dry season is slated to begin.
+- Have a few solid wet weather plans on hand:
+    - Despite being the third driest season on paper, there's actually still a 43% chance of rain on any given day!
+    - The rainiest day in January is often one of the rainiest days in the entire year as well - if this is the day of the activity, the wet weather plan will most certainly need to be used.
+
+Being the start of the year, Jan is typically when people feel the most motivated to 'up' their fitness game or kickstart a new and improved lifestyle. We can further encourage this by planning fitness events that can take place rain or shine, ie. mostly indoors.
+
+#### Feb is the most unpredictable month of all, but rainfall rates are low enough that a gamble will probably be worth it
+
+In addition to having the lowest rainfall rate, when it does rain, it's likely to be fairly manageable. Unlike Jan, the rainiest day in Feb is probably just an average shower. It is one of the cooler months as well - it had a mean surface air temperature of <= 27.5 degrees celsius more than 80% of the time! During dry weather, it is great for more strenuous / long / large-scale outdoor activities such as hiking, mass running events, beach clean-up, outdoor performances, etc. Feb is likely most affected by what the year is going to be like in general (some years are just wetter overall). For an average year, planning as per normal with 1 or 2 wet weather plans on hand should suffice.
+
+#### Mar - like Jan, but slightly better
+
+The unpredictability of Mar comes from it being the tail-end of the monsoon season. As the month progresses, it may get hotter, less windy, and more prone to afternoon/evening showers. There's an opportunity to take advantage of the drier, more cooling weather in the beginning part of March. Technically, a dry day in March would be ideal for more 'intense' outdoor activities, such as an outing to the beach or botanical gardens, but keep in mind that the tail-end of the monsoon season will inherently be slightly uncertain. Schedule outdoor activities in the beginning of the month when the dry season is still likely to be in full force.
+
+#### Apr & May: surprisingly hot (especially in the afternoons)
+
+Both also have higher rainfall rates compared to Jun/Jul/Sep. Occasional thunderstorms in the afternoons may last till early evening. Hot & potentially rainy, with above-average humidity levels, there's a need to plan for a greater variety of events during these months & keep them largely interchangeable so that they can be altered when more accurate information pours in, for example from the meteorological agency. 
+
+#### Jun, Jul & Sep: good for casual outdoor activities
+
+These months typically experience low rainfall rates, although still higher than the Jan - Mar period. When it does rain, showers are likely to be moderate. There's a chance that they will take place in the afternoon but typically won't last too long. Being near sheltered areas in the afternoons may be helpful in case of temporary rainy weather. Alternatively, reminding participants to bring umbrellas may be sufficient as well, depending on the nature of the activity.
+
+Jun & Jul also tend to be sunnier / hotter while Sep typically experiences more moderate temperatures. Outdoor activities can ideally be held during these months, but try to avoid overly-strenuous activities due to the possibility of hot weather in Jun & Jul, especially if the target group is the elderly. On the other hand, Sep should be cooling enough for such activities!
+
+Jun is also the month of school holidays although families are less likely to travel during Jun than Dec. Some family-bonding activities can be planned for, especially at the CC-level to avoid complicated logistics for overly huge crowds. Examples include:
+- Treasure hunt, involving a mixture of outdoor & indoor activities.
+- Educational trips such as farm trips, visiting the botanical gardens, going on a history trail (points-based to entice the children, mixture of indoor & outdoor locations)
+
+#### Aug: the month of moderation
+
+Aug boasts of an average rainfall rate, slightly above-average temperatures, as well as being the least humid month of all. Part of the Southwest Monsoon period alongside Jun, Jul & Sep, Aug is pretty similar to these months but historically wetter. Humidity levels are low though, which may make outdoor activities more tolerable/pleasant. Since Aug includes National Day, this is the prime time to engage citizens on a CC/RC level, such as block decoration activities, etc. To spice things up, competitons can be held.
 
 
-### Problem Statement
+Apart from the wet conditions, October generally has a moderate climate in terms of temperature and humidity levels. From this month onwards, it would be good to plan for more indoor activities. If outdoors activities must be planned, try to restrict them to just the first week.
 
-Generally speaking, you will be asked to come up with a data science problem. This problem is ultimately up to you, but below are some guidelines/things to consider when crafting a problem statement:
-> 1. Consider your audience. Who is your project going to help? Who will your presentation be geared towards? Establishing your audience first can help you narrow down your scope.
-> 2. Consider the data you will use. Based on the contents of this data, think about some questions you could reasonably answer. These questions should aim to solve some kind of problem.
-> 3. Based on these questions, what would bring some kind value to your audience? This can be business insights, increase sales, make decisions, etc.
-> 4. Put everything from the above steps together into a few sentences that describe the specific problem you are trying to solve and who it will benefit.
-> [Here is a blog post](https://towardsdatascience.com/defining-a-data-science-problem-4cbf15a2a461) about crafting a data science problem statement.
+#### [It's Always Sunny in Philadelphia](https://en.wikipedia.org/wiki/It%27s_Always_Sunny_in_Philadelphia), but It's Always Rainy in Singapore
+_and hot...and humid..._
 
-Here are some example prompts if you need inspiration:
-> * Your work for the Singapore tourism and you are required to advice tourist who visit Singapore and love being outdoors, on how they can be prepared based on their travel months.
-> * You work for a local delivery-app and you want to use weather to better plan your operations.
-> * You are hired by Meteorological Services Singapore to analyze weather trends in Singapore and identify business that might be interested to use them.
-> * You are an outdoor event planner. After covid, you want to create events that families can come and enjoy. 
-> * *Feel free to be creative with your own prompt!*
+11 out of 12 months have average rainfall rates exceeding 40% - this means that each week typically experiences at least 2 to 3 days of rain! Giving up on outdoor activities is clearly not the answer - keep in mind that, even on rainy days, there are differences. For example, rain isn't '24/7' - different periods have different 'rainy hours'. Nov to Jan (especially early Jan) should be avoided not just because of high rainfall rates, but also because it tends to rain in the afternoon / early evening with the potential for storms to persist for long periods, and over many days!
 
-And here are some example problem statements related to the above prompts. Come up with your own or modify these for your needs:
-> * Weather in Singapore are largely sunny or rainy. However, tourists who are not familiar with local weather conditions may be caught off guard, causing their plans to be disrupted. This project aims to analyse trends in Singapore weather to identify adverse conditions for tourists who enjoy being outdoor. This analysis can help tourist plan travel period and itinerary better, bringing home a pleasant experience.
-> * You are working for a local delivery services company. Every year, delivery operations and customer demand are heavily impacted by rainy weather conditions. This can be circumvented if the company can plan for such conditions beforehand. This project aims to analyse the monthly weather patterns over the year to allow the operations team to better plan and allocate resources during the rainy seasons.
-> * *Feel free to be creative with your own problem statement!*
+Another example would be the 'middle months' - while they tend to appear similar, there's a difference.  Mar - May tends to experience showers in the afternoon & early evening, since they are in the inter-monsoon period following the Northeast Monsoon. On the other hand, Jun - Sep (Southeast Monsoon) often experience rains before dawn and during midday due to Sumatra Squalls. Some short ('passing') showers happen in the afternoon as well. Using the Southeast Monsoon period as an example, passing showers may not necessitate a complete shift in plans whereas prolonged rain would.
 
+Different precautionary measures should be put in place depending on the month - an outdoor activity held during the rainy season may require a well-crafted wet weather plan that has a high probability of being used, whereas one held during a month typically experiencing short, light showers probably just needs reminders to bring umbrellas/raincoats and smart planning that would have participants take their breaks in sheltered areas during predicted rainy hours.
 
----
-
-### Datasets
-
-#### Provided Data
-
-There are 2 datasets included in the [`data`](./data/) folder for this project. These correponds to rainfall information. 
-
-* [`rainfall-monthly-number-of-rain-days.csv`](./data/rainfall-monthly-number-of-rain-days.csv): Monthly number of rain days from 1982 to 2022. A day is considered to have “rained” if the total rainfall for that day is 0.2mm or more.
-* [`rainfall-monthly-total.csv`](./data/rainfall-monthly-total.csv): Monthly total rain recorded in mm(millimeters) from 1982 to 2022
-
-Other relevant weather datasets from [data.gov.sg](data.gov.sg) that you can download and use are as follows:
-
-* [Relative Humidity](https://data.gov.sg/dataset/relative-humidity-monthly-mean)
-* [Monthly Maximum Daily Rainfall](https://data.gov.sg/dataset/rainfall-monthly-maximum-daily-total)
-* [Hourly wet bulb temperature](https://data.gov.sg/dataset/wet-bulb-temperature-hourly)
-* [Monthly mean sunshine hours](https://data.gov.sg/dataset/sunshine-duration-monthly-mean-daily-duration)
-* [Surface Air Temperature](https://data.gov.sg/dataset/surface-air-temperature-mean-daily-minimum)
-
-**Make sure you cross-reference your data with your data sources to eliminate any data collection or data entry issues.**
-
-#### Additional Data
-You can also use other datasets for your analysis, make sure to cite the source when you are using them.
-
----
-
-### Deliverables
-
-All of your projects will comprise of a written technical report and a presentation. As we continue in the course, your technical report will grow in complexity, but for this initial project it will comprise:
-- A Jupyter notebook that describes your data with visualizations & statistical analysis.
-- A README markdown file the provides an introduction to and overview of your project.
-- Your presentation slideshow rendered as a .pdf file.
-**NOTE**: Your entire Github repository will be evaluated as your technical report. Make sure that your files and directories are named appropriately, that all necessary files are included, and that no unnecessary or incomplete files are included.
-
-For your first presentation, you'll be presenting to a **non-technical** audience. You should prepare a slideshow with appropriately scaled visuals to complement a compelling narrative. **Presentation duration will be 10 minutes.**
-
----
-
-### Technical Report Starter Code
-
-Future projects will require you to decide on the entire structure of your technical report. Here, we provide you with [starter code](./code/starter-code.ipynb) in a Jupyter notebook that will help to guide your data exploration and analysis. **If you choose to edit the core structure of this notebook, make sure you don't exclude any of the requested operations**.
-
----
-
-### Suggested Resources
-
-Here's a link on [how to give a good lightning talk](https://www.semrush.com/blog/16-ways-to-prepare-for-a-lightning-talk/), which provides some good recommendations for short presentations.
-
-[Here's a great summary](https://towardsdatascience.com/storytelling-with-data-a-data-visualization-guide-for-business-professionals-97d50512b407) of the main points of the book _Storytelling with Data_, which I can't recommend enough. [Here's a blog post](http://www.storytellingwithdata.com/blog/2017/8/9/my-guiding-principles) by the author about his guiding principles for visualizations.
-
----
-
-### Submission
-
-**Materials must be submitted through your GitHub account repo shared with the Teaching Team by scheduled due date.**
-
-Your technical report will be hosted on Github Enterprise. Make sure it includes:
-
-- A README.md (that isn't this file)
-- Jupyter notebook(s) with your analysis (renamed to describe your project)
-- Data files
-- Presentation slides
-- Any other necessary files (images, etc.)
-
----
-
-### Presentation Structure
-
-- **Presentation Time: 15 minutes**
-- Use Google Slides or some other visual aid (Keynote, Powerpoint, etc).
-- Consider the audience. Assume you are presenting to a non-technical audience (executives with the College Board, school administrators, admissions counselors, State officials, etc.).
-- Start with the **data science problem**.
-- Use visuals that are appropriately scaled and interpretable.
-- Talk about your procedure/methodology (high level, **CODE IS ALWAYS INAPPROPRIATE FOR A NON-TECHNICAL AUDIENCE**).
-- Talk about your primary findings.
-- Make sure you provide **clear recommendations** that follow logically from your analyses and narrative and answer your data science problem.
-
-Be sure to rehearse and time your presentation before class.
-
----
-
-### Rubric
-Teaching team will evaluate your project using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
-
-**Note:** Presentation will be done as a group while codes will be prepared and submitted by each student.
-
-**Scores will be out of 21 points based on the 7 items in the rubric.** <br>
-*3 points per section*<br>
-
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
-
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths?
-- Does the README provide a good executive summary of the project?
-- Is markdown formatting used appropriately to structure notebooks?
-- Are there an appropriate amount of comments to support the code?
-- Are files & directories organized correctly?
-- Are there unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
-
-**Clarity of Message**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the project?
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follows general best practices and style guidelines?
-- Are Pandas functions used appropriately?
-- Does the student demonstrate mastery masking in Pandas?
-- Does the student demonstrate mastery sorting in Pandas?
-
-**Data Cleaning and EDA**
-- Does the student fix data entry issues?
-- Are data appropriately labeled?
-- Are data appropriately typed?
-- Are datasets combined correctly?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-
-**Visualizations**
-- Are the requested visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
-
-**Research and Conceptual Understanding**
-- Were useful insights gathered from outside sources?
-- Are sources clearly identified?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
-
-**Presentation**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the presentation building toward a final conclusion?
-- Are the conclusions/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Is the student substantially over or under time?
-- Does the student appropriately pace their presentation?
-- Does the student deliver their message with clarity and volume?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations necessary and useful for supporting conclusions/explaining findings?
-
-In order to pass the project, students must earn a minimum score of 1 for each category.
-- Earning below a 1 in one or more of the above categories would result in a failing project.
-- While a minimum of 1 in each category is the required threshold for graduation, students should aim to earn at least an average of 1.5 across each category. An average score below 1.5, while it may be passing, means students may want to solicit specific feedback in order to significantly improve the project before showcasing it as part of a portfolio or the job search.
-
-### REMEMBER:
-
-This is a learning environment and you are encouraged to try new things, even if they don't work out as well as you planned! While this rubric outlines what we look for in a _good_ project, it is up to you to go above and beyond to create a _great_ project. **Learn from your failures and you'll be prepared to succeed in the workforce**.
+Outdoors activities also differ widely - a hike to Bukit Timah Hill should definitely be organised during a cool, dry period whereas a walk around the estate with stops at various points of interest can probably be planned for in most months.
