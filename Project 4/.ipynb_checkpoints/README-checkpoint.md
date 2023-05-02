@@ -5,7 +5,7 @@
 ---
 
 > _“We will not be able to eradicate dengue (because) the constant weather extremes create the perfect breeding conditions for mosquitoes."_ 
-- Winston Chow (climate scientist), College of Integrative Studies, Singapore Management University
+    ~ Winston Chow (climate scientist), College of Integrative Studies, Singapore Management University
 
 ---
 ## Problem Statement
@@ -34,7 +34,7 @@ Dengue (dengue fever) is a disease that is endemic to Singapore. Despite constan
 
 6. A clear pattern emerges when studying the nature of outbreaks, namely, that they tend to (although not always) peak sometime in the middle of the year. 
 
-![Total Cases over Months](image/total_cases_over_month.gif "Total Cases over Months")
+![Total Cases over Months](images/total_cases_over_month.gif "Total Cases over Months")
 
 ---
 ## Modelling
