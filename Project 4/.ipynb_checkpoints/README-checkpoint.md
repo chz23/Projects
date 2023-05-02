@@ -78,6 +78,7 @@ Then, based on the above numbers and assuming an efficacy rate of 40% in terms o
 We move on with the assumption of 40% efficacy, and decided to base our CBA on intervention via Project Wolbchia, which is one of the key vector control / intervention measures used by NEA in recent times. That is to say, we calculated the following based on the assumption that NEA would implement vector control measures in line with our predictions, namely Project Wolbachia, which would then result in a reduction of cases and their associated costs. The figures are as follows:
 
 | Description | Estimated Costs (Original) | Estimated Costs (+ Model & Intervention) |
+| --- | --- | --- |
 | Direct Costs (hospitalisation & treatment costs @ $3,500 per person) | $102M | $61.5M | 
 | Indirect Costs (loss of productivity @ $3,500 per person) | $102M | $61.5M | 
 | Project Wolbachia (deployment) | $0M | $40M | 
